@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-course_rate",
+      "2": "I-course_rate",
+      "3": "L-course_rate",
+      "4": "U-course_rate",
+      "5": "B-module",
+      "6": "I-module",
+      "7": "L-module",
+      "8": "U-module",
+      "9": "B-year",
+      "10": "I-year",
+      "11": "L-year",
+      "12": "U-year",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-course_rate": 1,
+      "I-course_rate": 2,
+      "L-course_rate": 3,
+      "U-course_rate": 4,
+      "B-module": 5,
+      "I-module": 6,
+      "L-module": 7,
+      "U-module": 8,
+      "B-year": 9,
+      "I-year": 10,
+      "L-year": 11,
+      "U-year": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]
