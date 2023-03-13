@@ -1,3 +1,5 @@
+
+
 ## Run this command in terminal  before executing this program
 ## rasa run -m models --endpoints endpoints.yml --port 5002 --credentials credentials.yml
 ## and also run this in seperate terminal
@@ -7,26 +9,19 @@ import requests
 import speech_recognition as sr     # import the library
 import subprocess
 from gtts import gTTS
+import os
+import pygame
 
 # sender = input("What is your name?\n")
+# Define the command to play the sound
 
 bot_message = ""
 message=""
+ID = "000"
+count = 0
 
-r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"message": "Hello"})
 
-print("Bot says, ",end=' ')
-for i in r.json():
-    bot_message = i['text']
-    print(f"{bot_message}")
-
-myobj = gTTS(text=bot_message)
-myobj.save("welcome.mp3")
-print('saved')
-# Playing the converted file
-subprocess.call(['mpg321', "welcome.mp3", '--play-and-exit'])
-
-while bot_message != "Bye":
+while bot_message != "end the survey":
 
     r = sr.Recognizer()  # initialize recognizer
     with sr.Microphone() as source:  # mention source it will be either Microphone or audio files.
@@ -46,11 +41,16 @@ while bot_message != "Bye":
 
     print("Bot says, ",end=' ')
     for i in r.json():
+        count += 1
         bot_message = i['text']
         print(f"{bot_message}")
 
     myobj = gTTS(text=bot_message)
-    myobj.save("welcome.mp3")
-    print('saved')
+    myobj.save(ID+"_"+str(count)+".mp3")
+    print("saved")
     # Playing the converted file
-    subprocess.call(['mpg321', "welcome.mp3", '--play-and-exit'])
+    pygame.init()
+    pygame.mixer.music.load(ID+"_"+str(count)+".mp3")
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
