@@ -2,6 +2,30 @@ version: "3.1"
 
 rules:
 
+#2 rules for restaurant_form, 1 for activation, 1 for submission:
+#Provide training examples in NLU file 
+#for SOLE
+- rule: activate SOLE survey
+  steps:
+    - intent: request_SOLE_form #Intent that triggers form activation
+    - action: SOLE_form    #Run the form
+    - active_loop: SOLE_form  # Form is active
+
+- rule: submit SOLE survey
+  condition:
+  - active_loop: SOLE_form #only be available if form is already activated
+  steps:
+    - action: SOLE_form #run the form
+    - active_loop: null       #deactivate form as all slots filled
+    - action: utter_slots_values  #Show the values provided
+    - action: utter_submit    #Say you submitted
+    
+
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -11,3 +35,24 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: initiate restart
+  steps:
+  - intent: restart_conversation 
+  - action: utter_restart
+  - action: action_restart
+
+- rule: Prompts user to rephrase for low confidence intervals
+  steps:
+  - intent: nlu_fallback
+  - action: utter_ask_rephrase 
+
+- rule: tell a story to the user
+  steps:
+  - intent: tell_story
+  - action: utter_story

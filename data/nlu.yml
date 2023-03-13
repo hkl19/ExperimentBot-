@@ -1,6 +1,278 @@
 version: "3.1"
-
 nlu:
+- intent: tell_story
+  examples: |
+    - Tell me a story BrainBot
+    - Could you tell me a story
+    - Read me a bedtime story
+- intent: restart_conversation
+  examples: |
+    - I would like to restart the app
+    - Restart please
+    - Can I restart the conversation
+    - Brainbot please restart
+    - restart
+    - reset the conversation
+    - remake
+    - can I redo this
+    - go back to the start
+    - Lets revert the conversation
+- intent: request_SOLE_form
+  examples: |
+    - Let's start the survey
+    - Can I start giving feedback
+    - Fire up the survey form
+    - May I provide some feedback
+    - Let's start the SOLE survey
+    - That's nice. Shall we start the survey?
+    - Lets start the survey
+    - I want to carry out the survey please
+    - I want to try the survey please
+    - I'd like to start the survey
+    - Can I express my thoughts on the course
+    - I want to share my experience today
+    - Let me tell you about what I think about Mech Eng
+    - Can I share what I feel about the course?
+    - I want to share about my thoughts on the course
+    - I want to share about my experience of being at Imperial
+    - Let me share my thoughts on the engineering department
+    - I would like to start a survey please
+- intent: inform_year
+  examples: |
+    - I'm currently in [first](year) year.
+    - I'm on my [second](year) year of my undergraduate degree
+    - I'm currently studying in [third](year) year.
+    - I'm on my [fourth](year) year in Mechanical Engineering
+    - [Final](year) year
+    - [Second](year) year
+    - I'm currently in year [two](year)
+    - I'm currently in my [fresher](year) year
+    - I'm in year [three](year) of my course
+    - I'm a year [one](year) student
+    - I'm in my [penultimate](year) year
+    - I'm in my [third](year) year
+    - [4](year)
+    - I'm currently in year [four](year) of my undergraduate degree
+    - I'm currently in year [three](year) of my bachelors
+    - [4th](year) year
+    - [3rd](year) year
+    - [2nd](year) year
+    - [1st](year) year
+    - [Fourth](year) year
+    - [4th](year) innit
+    - [4th](year) year ME4
+    - [Masters](year)
+    - [Postgrad](year) year
+    - I'm a [postgrad](year) student
+    - [Masters](year) course, so final
+    - [Third](year) year
+    - [7th](year) year Phd in Geography
+    - Uhhhhh [3rd](year) year
+    - [final](year) year
+    - In year [6](year) currently
+    - [2nd](year) year of my undergraduate degree
+    - [thirrrrrrd](year) year
+    - Year [1](year) of work
+    - I'm currently in my [fourth](year) year!
+    - I'm in my [third](year) year
+- intent: inform_module_name
+  examples: |
+    - I'd like to talk about [Mechatronics](module)
+    - I want to give feedback on [ECM](module)
+    - I want to rant about [DMT](module)
+    - Let's discuss about [Embedded C](module) by Ravi
+    - Can I share about [Machine Learning](module) by Peter
+    - Let's walk through my experience in [Statistics](module)
+    - I would love to talk about [Fluid Mechanics](module)
+    - Can I share about my experience in [Fluid Mechanics](module) by Fred
+    - Let me review Mike on his lectures about [Thermodynamics](module)
+    - I'd love to give my thoughts on Jun Jiang and his delivered course, [FEA](module)
+    - I want to talk about [Robotics](module)
+    - I'd like to share about [Mathematics](module)
+    - Lets talk about [Maths](module)
+    - I want to share my experience in [MTM](module)
+    - I'll share my experience on the [MPT](module) module.
+    - I'd like to share about [Machine](module) [Dynamics](module)
+    - Can i share my thoughts on Business [Economics](module)?
+    - [nanomaterials](module)
+    - [chemistry](module)
+    - [renewable energy](module)
+    - [plastic electronics](module)
+    - [robotics](module)
+    - [membrane biophysics](module)
+    - [finance](module)
+    - [computing](module)
+    - [Advanced Stress Analysis](module)
+    - [Aircraft Engine Technology](module)
+    - [AET](module)
+    - [FYP](module)
+    - [Final Year Project](module)
+    - [Intro to Robotics](module)
+    - [Principles of Epidermology](module)
+    - [Law](module)
+    - [ecm](module)
+    - [Accounting](module)
+    - [Fluids](module)
+    - My process modeling and [simulations](module) module
+    - [Strategic Management](module) module
+    - [Astrophysics](module) module
+    - [BME Biomechanics](module) module
+    - [Stress Analysis](module) module
+    - [Chemistry](module) module
+    - [Neuroscience](module)
+    - I was thinking of talking about the [Advanced Math](module) module cause I feel like it makes me cry the most.
+    - Introduction to [Thermodynamics](module)
+    - Maybe [thermodynamics](module)
+    - [Professional Engineering Skills](module)
+    - [Mechatronics 1](module)
+    - [Materials 1](module)
+    - [Design and Manufacture](module)
+    - [Foundational Mechanics](module)
+    - [Heat Transfer](module)
+    - [Maths and Computing](module)
+    - [Mathematics](module)
+    - [Dynamics](module) !
+    - [Machine Dynamics and Vibrations](module) would be nice to talk about
+    - [Design Make and Test](module) project
+    - [Manufacturing Technology and Management](module) with Graham
+    - [Finite Element Analysis](module)
+    - [Metal Processing Technology](module)
+    - [Fracture Mechanics](module)
+    - [Design Art and Creativity](module) is the lifeee
+    - [System Design and Optimisation](module)
+    - [Structure, Properties and Application of Polymers](module)
+    - [SPAP](module)
+    - [Computational Continuum Mechanics](module)
+    - [CCM](module)
+    - [FEA](module) is the best
+    - [Introduction to Nuclear](module)
+    - [Tribology](module)
+    - [Automotive Design](module) with Motorsport
+    - [ADM](module)
+    - [Future Clean Transport Technology](module)
+    - [FCT](module)
+    - [Mechanical Transmissions](module)
+    - [MTT](module)
+    - [Advanced Control](module)
+    - [Advanced Stress](module)
+    - [Applied Vibrational Engineering](module)
+    - [Applied Vibrations](module)
+    - [Combustion](module)
+    - [Composites](module)
+    - [Interfacing and Data Processing](module)
+    - [Nuclear Reactor Physics](module)
+    - [Nuclear Thermal Hydraulics](module)
+    - [Energy Systems](module)
+    - [Environment and Applied Fluids](module)
+    - [Stress](module)
+    - I'd like to share my thoughts on [ECM](module)
+    - Let me share about [embedded C](module)
+- intent: inform_course_rate
+  examples: |
+    - I give it a [five](course_rate) out of five
+    - I'd rate a [four](course_rate) for how well it was done
+    - I love Ravi so I'd give it a [five](course_rate)
+    - Awesome course, [five](course_rate) out of five
+    - Great learning experience, it thought me so much. I'd rate it [four](course_rate) out of five
+    - Really good, [four](course_rate) out of five
+    - [three](course_rate) out of five for me
+    - Below average, [two](course_rate) out of five
+    - Totally disliked it, [one](course_rate) out of five
+    - L score, [one](course_rate) out of five
+    - Didn't like it one bit, [two](course_rate) out of five
+    - Low, around [two](course_rate) out of five
+    - Make it [one](course_rate) out of five
+    - [three](course_rate) out of five, it was mid at best
+    - Honestly, I'd only give it a [one](course_rate)
+    - I think a [two](course_rate) is the most I would give
+    - I think its so-so, a [three](course_rate) out of five
+    - I would give it a [four](course_rate) for how well it was delivered
+    - I think a [five](course_rate) out of five is justified
+    - I am rating it a [four](course_rate)
+    - I am rating it a [two](course_rate)
+    - I'll give it a [2](course_rate) out of 5
+    - I'll rate it a [4](course_rate)
+    - I'll rate it a [3](course_rate)
+    - Let me give it a [1](course_rate)
+    - I'll rate it a [5](course_rate)
+    - I'll give it a [4](course_rate) out of 5
+    - I'll rate it a [2](course_rate) overall
+    - I'll rate it a [1](course_rate) for its bad rep
+    - Let me give it a [3](course_rate) out of 5
+    - I'll rate it a [5](course_rate) out of 5
+    - [4.99](course_rate)
+    - [5](course_rate)
+    - [3](course_rate)
+    - [4](course_rate)
+    - [1](course_rate)
+    - [3.5](course_rate)
+    - Fuckin horrible I dont understand matrices man. Can I give it a -1? Wait no fine I'll give it [2](course_rate) cuz ruth was nice and gave examples. Exam do be ass tho
+    - hmm [4](course_rate)
+    - Definitely a [5](course_rate)
+    - [1.1](course_rate)
+    - I'd give it a [five](course_rate) since its so good
+    - I would rate it a [5](course_rate)
+- intent: inform_course_structure
+  examples: |
+    - I think the course overall was rushed through too quickly, with too little focus on the details
+    - I think the lecturer really did an awesome job entertaining us all the way
+    - I found it really engaging and overall super exciting
+    - It was rather dull and not exciting. I felt really let down
+    - I didnt like it one bit, the structure was a mess.
+    - I loved how fast paced the flow is on the lectures, as well as the tutorial sessions
+    - I felt really listened to by the lecturer as he gave personal tutorials with so much effort
+    - The lecturer really attended to all our needs, and the module enthusiasm reflects that
+    - I felt that this module was one of the toughest one, too hard for a third year student
+    - I think the lectures were really engaging and well taught
+    - I really enjoyed the constant feedback for improvements, it helped me alot along the year
+    - boring
+    - really interesting
+    - awesome
+    - love it
+    - amazing
+    - uninformative
+    - its bad
+    - Really good lecturing and an interesting engineering challenge
+    - Teach in very complicated way
+    - The lecturer explains concepts very well. The module feels well structured. It does not feel like it's going too fast.
+    - Mediocre, could be better
+    - He's not great. Good tutorials but meh lectures/notes
+    - Very enthusiastic although the module feels not very planned
+    - Extremely passionate and good
+    - It's bare long not gonna lie
+    - Lecture notes created in LaTex are such a turn on
+    - Very interesting stuff but can be a bit confusing
+    - Really like the course and the topics discussed
+    - too much troubleshooting than actual learning, takes up more than 80% of the coding time
+    - Lousy
+    - I think they should continue the module and have a statistics 2 module as it would be helpful to learn more about it
+    - Could be better. I did not take Primary School mathematics so I did not understand half of the mode. The other half of the module looks cool. Lecturer could be better, wish I had quit university this year to work on my business though.
+    - I think that the course was well done, but work load was significantly stressful
+    - I liked it alot
+- intent: chitchat/ask_name
+  examples: |
+    - What is your name?
+    - May I know your name?
+    - What do people call you?
+    - Do you have a name for yourself?
+    - How do I call you?
+    - What are you pronouns?
+- intent: chitchat/ask_birth
+  examples: |
+    - Where were your born?
+    - When is your birthday?
+    - Who created you?
+    - Who made you?
+    - Whos the one who created you?
+    - Where were you built?
+- intent: out_of_scope
+  examples: |
+    - I want to order some food
+    - Who is the US President?
+    - Do you love KFC or Mcdonalds?
+    - Are they aliens?
+    - What are your thoughts on feminism
+    - Tell me about your thoughts on love
 - intent: greet
   examples: |
     - hey
@@ -9,19 +281,27 @@ nlu:
     - hello there
     - good morning
     - good evening
-    - moin
+    - morning
     - hey there
-    - let's go
+    - hiya
+    - heya
     - hey dude
     - goodmorning
     - goodevening
     - good afternoon
-
+    - wagwarn
+    - sup
+    - wassup fam
+    - whats up sweetie
+    - Hello there
+    - Hello
+    - How are you today
+    - How is it going
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
+    - see ya
+    - ciao
+    - later allegator
     - good night
     - bye
     - goodbye
@@ -29,26 +309,32 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
+    - Thank you, goodbye
+    - Thank you, have a nice day
 - intent: affirm
   examples: |
     - yes
-    - y
+    - yeap
     - indeed
     - of course
     - that sounds good
     - correct
-
+    - exactly
+    - yeah
+    - Sure! that doesnt sound bad
+    - hellyea
+    - lets go
+    - i guess
 - intent: deny
   examples: |
     - no
-    - n
+    - of course not
     - never
     - I don't think so
     - don't like that
     - no way
     - not really
-
+    - nah
 - intent: mood_great
   examples: |
     - perfect
@@ -62,10 +348,10 @@ nlu:
     - I am going to save the world
     - super stoked
     - extremely good
-    - so so perfect
+    - really good
     - so good
     - so perfect
-
+    - Yeap, perfect
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -80,12 +366,14 @@ nlu:
     - not good
     - not very good
     - extremly sad
-    - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
-    - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: chitchat
+  examples: |
+    - I'm fine thank you. What is your name?
+    - Whos the one that created you?
+    - Interesting, where were you born?

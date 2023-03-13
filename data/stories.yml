@@ -2,29 +2,99 @@ version: "3.1"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 
-- story: sad path 1
+- story: interactive_story_1
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - intent: request_SOLE_form
+  - action: SOLE_form
+  - active_loop: SOLE_form
+  - slot_was_set:
+    - requested_slot: year
+  - slot_was_set:
+    - year: third
+  - slot_was_set:
+    - requested_slot: module
+  - slot_was_set:
+    - module: Dynamics
+  - slot_was_set:
+    - requested_slot: course_rate
+  - slot_was_set:
+    - course_rate: four
+  - slot_was_set:
+    - requested_slot: course_structure
+  - slot_was_set:
+    - course_structure: I think the lectures were really engaging and well taught
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_slots_values
+  - action: utter_submit
+  - intent: goodbye
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: chitchat
+  - action: utter_chitchat
+  - intent: request_SOLE_form
+  - action: SOLE_form
+  - active_loop: SOLE_form
+  - slot_was_set:
+    - requested_slot: year
+  - slot_was_set:
+    - year: third
+  - slot_was_set:
+    - requested_slot: module
+  - slot_was_set:
+    - module: Economics
+  - slot_was_set:
+    - requested_slot: course_rate
+  - slot_was_set:
+    - course_rate: five
+  - slot_was_set:
+    - requested_slot: course_structure
+  - slot_was_set:
+    - course_structure: I really enjoyed the constant feedback for improvements, it helped me alot along the year
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_slots_values
+  - action: utter_submit
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: chitchat
+  - action: utter_chitchat
+  - intent: request_SOLE_form
+  - action: SOLE_form
+  - active_loop: SOLE_form
+  - slot_was_set:
+    - requested_slot: year
+  - slot_was_set:
+    - year: fourth
+  - slot_was_set:
+    - requested_slot: module
+  - slot_was_set:
+    - module: ECM
+  - slot_was_set:
+    - requested_slot: course_rate
+  - slot_was_set:
+    - course_rate: five
+  - slot_was_set:
+    - requested_slot: course_structure
+  - slot_was_set:
+    - course_structure: I think that the course was well done, but work load was significantly stressful
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_slots_values
+  - action: utter_submit

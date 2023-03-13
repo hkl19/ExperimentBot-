@@ -1,33 +1,146 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
+- affirm
+- bot_challenge
+- chitchat:
+    used_entities:
+    - course_rate
+    - module
+    - year
+    is_retrieval_intent: true
+- deny
+- goodbye
+- greet
+- inform_course_rate
+- inform_course_structure:
+    use_entities: []
+- inform_module_name
+- inform_year
+- mood_great
+- mood_unhappy
+- request_SOLE_form
+- restart_conversation
+- tell_story
 responses:
+  utter_story:
+  - text: Once upon a time, in a faraway land, there was a handsome ogre called Shrek. Shrek lived alone in the forest, without a friend. He loved to swim in swamps. His favourite pass time is eating babies (baby mushrooms), who all screamed in terror as his mouth devoured them one by one. He was a happy ogre. 
+  utter_affirm_restart:
+  - text: Are you sure you'd like to restart our conversation?
+  utter_restart:
+  - text: Sure. Say hello to activate me again!
+  utter_request_SOLE:
+  - text: Shall we start with the survey?
+  utter_ask_year:
+  - text: What year are you currently in?
+  utter_ask_module:
+  - text: Thanks for clarifying! Which module would you like to talk about today?
+  utter_ask_course_structure:
+  - text: Great. As a start, what are your thoughts on the {module} course this year?
+  utter_ask_course_rate:
+  - text: Between 1 to 5, how much would you rate {module} by?
+
+  utter_submit:
+  - condition:
+    - type: slot
+      name: course_rate
+      value: one
+    text: I apologise for the suboptimal delivery this year. I will make sure to push your feedback to the department.
+  - condition:
+    - type: slot
+      name: course_rate
+      value: two
+    text: Thank you for your critism. I'll ensure your feedback will be conveyed to the department
+  - condition:
+    - type: slot
+      name: course_rate
+      value: three
+    text: I see some room for improvement. I will ensure your feedback gets the attention it needs.
+  - condition:
+    - type: slot
+      name: course_rate
+      value: four
+    text: Thank you for your rating. I really appreciate you taking the time out for this.
+  - condition:
+    - type: slot
+      name: course_rate
+      value: five
+    text: Guess you really loved {module}! I shall convey your love letter to the lecturer ASAP.
+  utter_slots_values:
+  - text: |
+      "As a quick check, you mentioned that:
+       - The module you are referring to is {module}.
+       - You rated the course a {course_rate} out of 5.
+       - Your overall feedback is : {course_structure}.
+  utter_out_of_scope:
+  - text: Sorry, I couldn't handle that request just yet. 
+  utter_ask_rephrase:
+  - text: I'm sorry I didn't quite understand that. Could you please rephrase? 
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hello, its been great. What can I do for you today?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
+  utter_chitchat/ask_name:
+  - text: My given name is Brainbot, but you can call me anything!
+  utter_chitchat/ask_birth:
+  - text: I'm born through the mechanical engineering department at Imperial! My creator is named Han Kee, I heard he's very friendly.
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+entities:
+- year
+- course_rate
+- module
+slots:
+  year:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: year
+  module:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: module
+  course_structure:
+    type: text
+    mappings:
+    - type: from_text
+      intent: inform_course_structure
+      not_intent: course_rate
+  course_rate:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: course_rate
+      not_intent: chitchat
+forms:
+  SOLE_form:
+    ignored_intents:
+    - chitchat
+    required_slots:
+    - year
+    - module
+    - course_rate
+    - course_structure
+actions:
+- utter_greet
+- action_restart
+- utter_affirm_restart
+- utter_chitchat
+- utter_goodbye
+- utter_happy
+- utter_iamabot
+- utter_restart
+- utter_slots_values
+- utter_submit
+- utter_ask_rephrase
+- utter_story
